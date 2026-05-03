@@ -1,0 +1,911 @@
+{
+  "name": "Social Media Auto Poster",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "4fe55ee8-53cb-491f-b966-f9d66ddbab4a",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2864,
+        -112
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs",
+          "mode": "list",
+          "cachedResultName": "Auto social media posting ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1e9e40ec-03a9-4cb4-bc24-931686a04c59",
+      "name": "Read Pending Posts",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        -2448,
+        -112
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "KpaeDYfLqGOSGxBs",
+          "name": "Google Sheets account 8"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs",
+          "mode": "list",
+          "cachedResultName": "Auto social media posting ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $json.ID }}",
+            "Status": "={{ $json.Status }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Topic",
+              "displayName": "Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "keywords",
+              "displayName": "keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Caption",
+              "displayName": "Caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image_URL",
+              "displayName": "Image_URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post_Date",
+              "displayName": "Post_Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post_Time",
+              "displayName": "Post_Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Platform",
+              "displayName": "Platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "35a432ec-4373-411c-9058-f7fe62e0ab7b",
+      "name": "Set Status Processing",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        -2016,
+        -112
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "KpaeDYfLqGOSGxBs",
+          "name": "Google Sheets account 8"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.pexels.com/v1/search?query={{ encodeURIComponent($('Read Pending Posts').item.json['Keywords']) }}&per_page=3&orientation=landscape",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "oTs9Oj8ihlxnXG0Erp6ewukuDtFgZiYmtYFE1VYqbMLuvJDhuZIIfu4d"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eda6f631-5fed-42c8-b916-4e6f0a1390d4",
+      "name": "Fetch Image from Pexels",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1456,
+        -112
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// AI Agent node se caption lo\nconst raw = $('AI Agent').item.json.output;\n\n// Pexels node se image lo  \nconst pexelsData = $('Fetch Image from Pexels').item.json;\nconst imageUrl = pexelsData.photos[0].src.large;\n\nlet caption = \"\";\nlet hashtags = \"\";\n\ntry {\n  const parsed = JSON.parse(raw);\n  caption = parsed.caption;\n  hashtags = parsed.hashtags;\n} catch (e) {\n  const start = raw.indexOf(\"{\");\n  const end = raw.lastIndexOf(\"}\");\n  const slice = raw.slice(start, end + 1);\n  const parsed = JSON.parse(slice);\n  caption = parsed.caption;\n  hashtags = parsed.hashtags;\n}\n\nreturn {\n  json: {\n    caption: caption,\n    hashtags: hashtags,\n    full_caption: caption + \"\\n\\n\" + hashtags,\n    image_url: imageUrl\n  }\n};"
+      },
+      "id": "4192ba13-85f3-470a-b9bd-8491fcb118ed",
+      "name": "Parse AI + Image Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1168,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/17841480139111678/media",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "image_url",
+              "value": "={{ $json.image_url }}"
+            },
+            {
+              "name": "caption",
+              "value": "={{ $json.full_caption }}"
+            },
+            {
+              "name": "access_token",
+              "value": "EAANpMw2ovUgBRVu9yLJxaD6e7JZB9r8yAAGx7jwxTdbZADVS7LEusg6MhsUqksPeW6d5udm1LLmGcyuIA2LkH4nTWgBXfeZCJl7LPjvNKObgt2jX1ZBkjBA4iiMxDhbIW6S1T0tWNMHkBnBVaEMINXnIzulTxMNWvSfyiQudUB2bkJefLtFPwKBlNDVB7AZDZD"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "61267bcd-c1b6-404b-a3b4-a28dfd55fffa",
+      "name": "Instagram - Create Container",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -944,
+        -416
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "=POST",
+        "url": "=https://graph.facebook.com/v19.0/17841480139111678/media_publish",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "creation_id",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "name": "access_token",
+              "value": "EAANpMw2ovUgBRVu9yLJxaD6e7JZB9r8yAAGx7jwxTdbZADVS7LEusg6MhsUqksPeW6d5udm1LLmGcyuIA2LkH4nTWgBXfeZCJl7LPjvNKObgt2jX1ZBkjBA4iiMxDhbIW6S1T0tWNMHkBnBVaEMINXnIzulTxMNWvSfyiQudUB2bkJefLtFPwKBlNDVB7AZDZD"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc6ad630-4584-4722-9df4-7bcf4468579a",
+      "name": "Instagram - Publish Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        -448
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs",
+          "mode": "list",
+          "cachedResultName": "Auto social media posting ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "={{ $('Set Status Processing').item.json.Status }}",
+            "Image_URL": "={{ $('Read Pending Posts').item.json.Image_URL }}",
+            "Caption": "={{ $('Read Pending Posts').item.json.Caption }}",
+            "ID": "={{ $('Read Pending Posts').item.json.ID }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Topic",
+              "displayName": "Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "keywords",
+              "displayName": "keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Caption",
+              "displayName": "Caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Image_URL",
+              "displayName": "Image_URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Post_Date",
+              "displayName": "Post_Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post_Time",
+              "displayName": "Post_Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Platform",
+              "displayName": "Platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "beec1ed4-1924-4c58-9b24-51d1fb8c7c02",
+      "name": "Update Status - Done",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        384,
+        208
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "KpaeDYfLqGOSGxBs",
+          "name": "Google Sheets account 8"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs",
+          "mode": "list",
+          "cachedResultName": "Auto social media posting ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1bOeODH5-yq88_eSx7P6eb4-b9Ul5Gwr0Q8IwTYpA3Bs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $('Set Status Processing').item.json.ID }}",
+            "Status": "=Failed"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Topic",
+              "displayName": "Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "keywords",
+              "displayName": "keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Caption",
+              "displayName": "Caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Image_URL",
+              "displayName": "Image_URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post_Date",
+              "displayName": "Post_Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Post_Time",
+              "displayName": "Post_Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Platform",
+              "displayName": "Platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "d6d44421-cf86-416d-a99d-6478416f48c9",
+      "name": "Update Status - Failed",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        -304,
+        -176
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "KpaeDYfLqGOSGxBs",
+          "name": "Google Sheets account 8"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "6375617883",
+        "text": "=❌ *Social Media Post FAILED!*\n\n🆔 Row ID: {{ $('Read Pending Posts').item.json['ID'] }}\n📌 Topic: {{ $('Read Pending Posts').item.json['Topic'] }}\n⚠️ Error: {{ $json.error?.message || 'Unknown error' }}\n\n👉 Please check your Google Sheet and fix the issue.",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "19ff3ea5-581e-407a-9c9a-c79fb3172e95",
+      "name": "Telegram Error Alert",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        496
+      ],
+      "webhookId": "9dcf43e2-4b54-403d-998d-3bacd9d39b00",
+      "credentials": {
+        "telegramApi": {
+          "id": "qmcnzYLZsjk9Qxk7",
+          "name": "Telegram account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Topic: {{ $('Read Pending Posts').item.json['Topic'] }}\nKeywords:{{ $('Read Pending Posts').item.json.keywords }}\nPlatform: Facebook and Instagram\nTone: Professional but friendly",
+        "options": {
+          "systemMessage": "You are a professional social media content expert. \nWrite engaging captions and hashtags for Facebook \nand Instagram posts. Always respond ONLY in valid \nJSON format like this:\n{\"caption\": \"your caption here\", \"hashtags\": \"#tag1 #tag2 #tag3 #tag4 #tag5\"}\nNo extra text. No markdown. Only JSON."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -1808,
+        -112
+      ],
+      "id": "54ba10a7-82cc-4a3c-8f0c-5d10e55b2d3d",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -1856,
+        176
+      ],
+      "id": "7723cb66-ab5a-454f-a7bf-05c61d2422da",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "vNLNVrIIc2IBQjrE",
+          "name": "Groq account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/1071789662684518/feed",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "={{ $('Parse AI + Image Data').item.json.full_caption }}"
+            },
+            {
+              "name": "link",
+              "value": "={{ $('Parse AI + Image Data').item.json.image_url }}"
+            },
+            {
+              "name": "access_token",
+              "value": "EAAexyQbMfTEBRQx1y6Jr7RRIWJA34M3oEfpKbZAYcx0jVnqZBsP5bXXPFSuuE66coz6Mpd1S3W4OXJZA9JjtRJVS35MwL3D8EzYQXxzFVDLXTmNG1za5jsd1fb33hZBO9qkbh6APSPpRZAg0cDxSHZAL7BxWTx5Y3KlXNuKnip084zzNfZBbbXVFrPixFZBj7FDsfNa3n4ZAZAThle8PCjoDxz9M9OSlcMWQYJtbgE4HwDFssZD"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "da8f1741-c71c-432c-9e5e-68524b28ae9a",
+      "name": "Facebook - Publish Post1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -880,
+        192
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ad695aac-0b03-4934-a14c-e2c22d7e4496",
+              "leftValue": "={{ $('Set Status Processing').item.json.Status }}",
+              "rightValue": "done",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "ffe427b5-738c-4d26-90ae-6b55e8298b77",
+              "leftValue": "={{ $('Set Status Processing').item.json.Status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2784,
+        2496
+      ],
+      "id": "cca8a09a-fc78-49d8-932d-e9de530d108c",
+      "name": "If"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read Pending Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Pending Posts": {
+      "main": [
+        [
+          {
+            "node": "Set Status Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Status Processing": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Image from Pexels": {
+      "main": [
+        [
+          {
+            "node": "Parse AI + Image Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI + Image Data": {
+      "main": [
+        [
+          {
+            "node": "Instagram - Create Container",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Facebook - Publish Post1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram - Create Container": {
+      "main": [
+        [
+          {
+            "node": "Instagram - Publish Post",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram Error Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram - Publish Post": {
+      "main": [
+        [
+          {
+            "node": "Update Status - Done",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Status - Failed": {
+      "main": [
+        [
+          {
+            "node": "Telegram Error Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Fetch Image from Pexels",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook - Publish Post1": {
+      "main": [
+        [
+          {
+            "node": "Update Status - Done",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Status - Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Asia/Karachi",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "ae5c5e16-931d-4c75-84d8-fafdfe588305",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "da5646dbf8270f4746f8197e83ccb7ae531e2e12bf7f1ebf037945a004faa624"
+  },
+  "id": "fvdlUUnKM0CxQaLH",
+  "tags": []
+}
